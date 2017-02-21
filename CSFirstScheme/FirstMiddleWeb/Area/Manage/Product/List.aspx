@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List.aspx.cs" Inherits="Area_Manage_Information_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List.aspx.cs" Inherits="Area_Manage_Product_List" %>
 
 <!DOCTYPE html>
 
