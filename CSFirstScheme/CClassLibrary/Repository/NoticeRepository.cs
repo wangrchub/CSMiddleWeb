@@ -35,7 +35,7 @@ namespace CSFirstScheme.CClassLibrary.Repository
 
         public int Add(Notice item)
         {
-            return 0;
+            return Add(new List<Notice>() { item });
 
         }
 
