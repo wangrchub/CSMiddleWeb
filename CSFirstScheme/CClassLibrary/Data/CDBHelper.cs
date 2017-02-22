@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CClassLibrary.Data
+namespace CSFirstScheme.CClassLibrary.Data
 {
     public class CDBHelper
     {
-        public CDBHelper() { }
+        public CDBHelper() {
+            _connString = CDBFactory.ExcelConnString;
+        }
 
         public CDBHelper(string connString)
         {
@@ -74,6 +76,19 @@ namespace CClassLibrary.Data
                 return null;
             }
         }
+
+
+        public DataTable ExecuteTable(string strSql)
+        {
+            return ExecuteDateSet(strSql).Tables[0];
+        }
+
+        public DataTable ExecuteTable(string strSql, OleDbParameter[] parameters)
+        {
+            return ExecuteDateSet(strSql, parameters).Tables[0];
+        }
+
+
 
 
         public int ExecuteNonQuery(string strSql)

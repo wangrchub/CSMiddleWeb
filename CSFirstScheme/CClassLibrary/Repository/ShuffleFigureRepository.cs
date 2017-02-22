@@ -1,12 +1,14 @@
-﻿using CClassLibrary.Data;
-using Entity.Admin;
+﻿using CSFirstScheme.CClassLibrary.Data;
+using CSFirstScheme.Entity.Admin;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CClassLibrary.Repository
+namespace CSFirstScheme.CClassLibrary.Repository
 {
     public class ShuffleFigureRepository
     {
@@ -14,7 +16,21 @@ namespace CClassLibrary.Repository
 
         public int Add(List<ShuffleFigure> list)
         {
-            return 0;
+            int rows = 0;
+            foreach (ShuffleFigure item in list)
+            {
+                string insertSql = @"Insert into [ShuffleFigure$](ShuffleFigureId,CreateTime,CreateBy) 
+                                     values(@ShuffleFigureId,@CreateTime,@CreateBy)";
+
+                OleDbParameter[] parameters = new OleDbParameter[] { 
+                    new OleDbParameter("@ShuffleFigureId",item.ShuffleFigureId),
+                    new OleDbParameter("@CreateTime",item.CreateTime),
+                    new OleDbParameter("@CreateBy",item.CreateBy)                
+                };
+
+                rows += db.ExecuteNonQuery(insertSql, parameters);
+            }
+            return rows;
         }
 
         public int Add(ShuffleFigure item)
@@ -39,7 +55,21 @@ namespace CClassLibrary.Repository
 
         public List<ShuffleFigure> Select()
         {
-            return new List<ShuffleFigure>();
+            List<ShuffleFigure> list = new List<ShuffleFigure>();
+            string sql = @"select * from [ShuffleFigure$]";
+            DataTable dt = db.ExecuteTable(sql);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ShuffleFigure item = new ShuffleFigure();
+                    item.ShuffleFigureId = new Guid(dr["ShuffleFigureId"].ToString());
+                    item.CreateTime = DateTime.Parse(dr["CreateTime"].ToString());
+                    item.CreateBy = dr["CreateBy"].ToString();
+                    list.Add(item);
+                }
+            }
+            return list;
 
         }
     }

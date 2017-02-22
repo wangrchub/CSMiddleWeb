@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Admin
+namespace CSFirstScheme.Entity.Admin
 {
     /// <summary>
     /// 新闻

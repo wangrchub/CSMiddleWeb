@@ -1,12 +1,14 @@
-﻿using CClassLibrary.Data;
-using Entity.Admin;
+﻿using CSFirstScheme.CClassLibrary.Data;
+using CSFirstScheme.Entity.Admin;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CClassLibrary.Repository
+namespace CSFirstScheme.CClassLibrary.Repository
 {
     public  class NoticeRepository
     {
@@ -14,7 +16,21 @@ namespace CClassLibrary.Repository
 
         public int Add(List<Notice> list)
         {
-            return 0;
+            int rows = 0;
+            foreach (Notice item in list)
+            {
+                string insertSql = @"Insert into [Notice$](NoticeId,CreateTime,CreateBy) 
+                                     values(@NoticeId,@CreateTime,@CreateBy)";
+
+                OleDbParameter[] parameters = new OleDbParameter[] { 
+                    new OleDbParameter("@NoticeId",item.NoticeId),
+                    new OleDbParameter("@CreateTime",item.CreateTime),
+                    new OleDbParameter("@CreateBy",item.CreateBy)                
+                };
+
+                rows += db.ExecuteNonQuery(insertSql, parameters);
+            }
+            return rows;
         }
 
         public int Add(Notice item)
@@ -39,7 +55,21 @@ namespace CClassLibrary.Repository
 
         public List<Notice> Select()
         {
-            return new List<Notice>();
+            List<Notice> list = new List<Notice>();
+            string sql = @"select * from [Notice$]";
+            DataTable dt = db.ExecuteTable(sql);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Notice item = new Notice();
+                    item.NoticeId = new Guid(dr["NoticeId"].ToString());
+                    item.CreateTime = DateTime.Parse(dr["CreateTime"].ToString());
+                    item.CreateBy = dr["CreateBy"].ToString();
+                    list.Add(item);
+                }
+            }
+            return list;
 
         }
     }

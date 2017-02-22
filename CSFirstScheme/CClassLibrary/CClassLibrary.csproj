@@ -7,8 +7,8 @@
     <ProjectGuid>{9DFB88AD-0062-42F8-8B04-79492D7FD4A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CClassLibrary</RootNamespace>
-    <AssemblyName>CClassLibrary</AssemblyName>
+    <RootNamespace>CSFirstScheme.CClassLibrary</RootNamespace>
+    <AssemblyName>CSFirstScheme.CClassLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

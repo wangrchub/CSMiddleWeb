@@ -7,8 +7,8 @@
     <ProjectGuid>{AEBCD0FC-A551-4FCD-9A37-FEAEF99FF1B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entity</RootNamespace>
-    <AssemblyName>Entity</AssemblyName>
+    <RootNamespace>CSFirstScheme.Entity</RootNamespace>
+    <AssemblyName>CSFirstScheme.Entity</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

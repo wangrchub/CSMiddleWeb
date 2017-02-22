@@ -9,6 +9,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FirstMiddleWeb", "http://lo
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{aebcd0fc-a551-4fcd-9a37-feaef99ff1b5}|Entity.dll;{9dfb88ad-0062-42f8-8b04-79492d7fd4a5}|CClassLibrary.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_6225"
 		Debug.AspNetCompiler.PhysicalPath = "FirstMiddleWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6225\"
